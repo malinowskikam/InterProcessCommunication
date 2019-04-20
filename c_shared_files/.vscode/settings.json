@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "file_operations.h": "c",
+        "fcntl.h": "c",
+        "unistd.h": "c"
+    }
+}
