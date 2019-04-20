@@ -33,8 +33,6 @@ int slave(int id, char* ip)
                             visual,CWBackPixel|CWOverrideRedirect,
                             &window_attributes);
 
-    
-
     XSelectInput(display,window,ExposureMask|KeyPressMask);
     
     Colormap colormap = DefaultColormap(display,screen);
@@ -47,11 +45,19 @@ int slave(int id, char* ip)
 
     unsigned long start = time(NULL);
 
+    srand(start + id + (int)(long)ip);
+
     while(1)
     {
         XNextEvent(display,&xevent);
         if(xevent.type==KeyPress)
-        break;
+            break;
+        if(xevent.type==Expose)
+        {
+            XSetForeground(display,gc,rand());
+            XFillRectangle(display,window,gc,rand()%100,rand()%100,rand()%400,rand()%400);
+            XFlush(display);
+        }
     }
 
     unsigned long end = time(NULL);
