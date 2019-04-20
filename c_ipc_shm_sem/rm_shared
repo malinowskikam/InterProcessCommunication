@@ -1,4 +1,0 @@
-#!/bin/bash
-
-ipcrm -S 0x2577
-ipcrm -M 0x2577
