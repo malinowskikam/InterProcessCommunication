@@ -1,9 +1,9 @@
 #!/bin/bash
 
 master_f () {
-    ./szukaj.sh "$1" "$2" -s
+    ./find.sh "$1" "$2" -s
     if [[ "$?" -eq "1" ]] ; then
-        echo "Nie znaleziono żadnego pliku $1/**/$2"
+        echo "Didn't find any files called $1 in directory $2"
     fi
     exit 0
 }
@@ -16,7 +16,7 @@ slave_f () {
 
     for file in $path ; do
         if [ -d "$file" ] ; then
-            ./szukaj.sh "$file" "$2" -s &
+            ./find.sh "$file" "$2" -s &
             directory_count=$(( $directory_count + 1 ))
         else
             if [[ "$file" == "$1/$2" ]] ; then
@@ -42,14 +42,14 @@ elif [ "$#" -eq 3 ] ; then
     if [ "$3" == "-s" ] ; then
         is_master=0
     else
-        echo "Błędne wywołanie, użyj -h"
+        echo "Invalid exec, use -h"
     fi
 elif [ "$#" -eq 1 ] && [ "$1" == "-h" ] ; then
-    echo "Wywołanie: szukaj.sh [katalog] [plik]"
+    echo "find.sh [dir] [filename]"
 elif [ "$#" -eq 0 ] ; then
-    echo "Wywołanie: szukaj.sh [katalog] [plik]"
+    echo "find.sh [dir] [filename]"
 else
-    echo "Błędne wywołanie, użyj -h"
+    echo "Invalid exec, use -h"
 fi
 
 if [ "$is_master" -eq 0 ] ; then
