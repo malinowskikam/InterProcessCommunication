@@ -1,5 +1,5 @@
-#include"string.h"
-#include"stdlib.h"
+#include<string.h>
+#include<stdlib.h>
 
 typedef struct server_packet {
     int answer_length;
@@ -29,7 +29,7 @@ int server_packet_byte_stream_length(server_p sp)
 {
     return 4 + sp->answer_length;
 }
-//stąd dokończyć
+
 char* server_packet_to_byte_stream(server_p sp)
 {
     int bs_length = server_packet_byte_stream_length(sp);

@@ -1,8 +1,8 @@
 #include<stdio.h>
-#include <stdlib.h>
+#include<stdlib.h>
 #include<fcntl.h>
 #include<unistd.h>
-#include <sys/stat.h>
+#include<sys/stat.h>
 #include<string.h>
 
 int file_exists(char* filename)
