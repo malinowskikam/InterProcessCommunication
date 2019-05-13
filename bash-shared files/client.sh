@@ -1,11 +1,10 @@
 #!/bin/bash
-#klient wypełnia plik input.txt i wypisuje dane z pliku output.txt
 
 if [[ -f input.txt && -f output.txt ]]
 then
     if [[ ! -s input.txt ]]
     then
-        #echo "Wprowadź liczbe: "
+        #echo "Enter a number: "
         read user_input
         echo $user_input > input.txt
     fi
@@ -13,11 +12,11 @@ then
     while [ 1 ] ; do
         if [ -s output.txt ]
         then
-            #echo "Wynik to:"
+            #echo "Result:"
             cat output.txt
             > output.txt
         fi
     done
 else
-    echo "Brak plików input.txt i output.txt"
+    echo "Cannot find files input.txt and output.txt"
 fi

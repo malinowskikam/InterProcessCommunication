@@ -1,5 +1,4 @@
 #!/bin/bash
-#serwer oblicza wartość funkcji ( f(x)=x^2-2x+1 ) dla danych z pliku input.txt i zapisuje je w pliku output.txt
 
 if [[ -f input.txt && -f output.txt ]]
 then
@@ -13,5 +12,5 @@ then
         fi
     done
 else
-    echo "Brak plików input.txt i output.txt"
+    echo "Cannot find files input.txt and output.txt"
 fi
