@@ -4,7 +4,7 @@ server_fifo="serverfifo"
 
 shutdown () {
     rm $server_fifo
-    echo "Wyłączanie serwera..."
+    echo "Shutting down..."
     exit 0
 }
 
@@ -14,27 +14,27 @@ master_f () {
     trap "" SIGINT
     echo $$ > "server_pid"
     trap shutdown SIGUSR1
-    echo "Serwer"
+    echo "Server"
     mkfifo $server_fifo
     while [ true ] ; do
         read line < $server_fifo
         stringarray=($line)
-        klient_dir=${stringarray[0]}
+        client_dir=${stringarray[0]}
         arg=${stringarray[1]}
-        ./server.sh $klient_dir $arg -s &
+        ./server.sh $client_dir $arg -s &
     done
 }
 
 slave_f () {
-    klient_fifo="$1/klientfifo"
+    client_fifo="$1/clientfifo"
     arg=$(( $2 ))
-    echo "$(( $arg * $arg ))" > $klient_fifo
+    echo "$(( $arg * $arg ))" > $client_fifo
 }
 
 if [ "$#" -eq 0 ] ; then
     master_f
 elif [ "$#" -eq 3 ] && [ "$3" == "-s" ] ; then
-    slave_f $1 $2 # [katalog] [wartosc] -s
+    slave_f $1 $2 # [directory] [arg] -s
 else
-    echo "Nieprawidłowe wykonanie"
+    echo "Invalid exec"
 fi
