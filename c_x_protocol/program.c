@@ -54,9 +54,21 @@ int slave(int id, char* ip)
             break;
         if(xevent.type==Expose)
         {
-            XSetForeground(display,gc,rand());
-            XFillRectangle(display,window,gc,rand()%100,rand()%100,rand()%400,rand()%400);
-            XFlush(display);
+            XSetForeground(display,gc,rand()); //wybierz kolor
+            XFillRectangle(display,window,gc,rand()%250,rand()%250,rand()%250,rand()%250); //pomaluj prostokąt
+            XFlush(display); //flush
+            XSetForeground(display,gc,rand()); //wybierz kolor
+            XFillRectangle(display,window,gc,rand()%250,rand()%250,rand()%250,rand()%250); //pomaluj prostokąt
+            XFlush(display); //flush
+            XSetForeground(display,gc,rand()); //wybierz kolor
+            XFillRectangle(display,window,gc,rand()%250,rand()%250,rand()%250,rand()%250); //pomaluj prostokąt
+            XFlush(display); //flush
+            XSetForeground(display,gc,rand()); //wybierz kolor
+            XFillRectangle(display,window,gc,rand()%250,rand()%250,rand()%250,rand()%250); //pomaluj prostokąt
+            XFlush(display); //flush
+            XSetForeground(display,gc,rand()); //wybierz kolor
+            XFillRectangle(display,window,gc,rand()%250,rand()%250,rand()%250,rand()%250); //pomaluj prostokąt
+            XFlush(display); //flush
         }
     }
 
